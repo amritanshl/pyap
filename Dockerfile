@@ -1,18 +1,18 @@
-# Use the official Python 3.13 image
 FROM python:3.13.9-slim
 
-# Set the working directory inside the container
 WORKDIR /app
 
-# Copy the requirements file and install dependencies
+# Copy requirements and install
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application code
+# Copy the app code AND the templates folder
 COPY app.py .
+COPY templates/ ./templates/
 
-# Expose the port Flask runs on
+# Create the data directory for SQLite
+RUN mkdir /data
+
 EXPOSE 5000
 
-# Command to run the application
 CMD ["python", "app.py"]
