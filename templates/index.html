@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Mac Mini CI/CD App</title>
+    <style>body { font-family: Arial, sans-serif; padding: 50px; }</style>
+</head>
+<body>
+    <h1>Welcome to the Automated App!</h1>
+    <form method="POST" action="/submit">
+        <input type="text" name="message" placeholder="Type a message..." required>
+        <button type="submit">Save to Database</button>
+    </form>
+
+    <h2>Database Records:</h2>
+    <ul>
+        {% for msg in messages %}
+            <li>{{ msg[1] }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
